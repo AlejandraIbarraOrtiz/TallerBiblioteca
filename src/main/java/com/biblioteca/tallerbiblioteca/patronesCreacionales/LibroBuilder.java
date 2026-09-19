@@ -3,33 +3,69 @@ import com.biblioteca.tallerbiblioteca.modelo.Libro;
 
 public class LibroBuilder {
 
-    private String codigo;
-    private String titulo;
-    private String autor;
-    private String categoria;
-    private String estado;
+    private final String codigo;
+    private final String titulo;
+    private final String autor;
+    private final String categoria;
+    private final String estado;
 
-    public LibroBuilder(String codigo, String titulo, String autor){
+    private LibroBuilder(Builder builder){
 
-        this.codigo = codigo;
-        this.titulo = titulo;
-        this.autor = autor;
+        this.codigo = builder.codigo;
+        this.titulo = builder.titulo;
+        this.autor = builder.autor;
+        this.categoria = builder.categoria;
+        this.estado = builder.estado;
 
     }
 
-    public LibroBuilder setCategoria(String categoria){
-
-        this.categoria = categoria;
-        return this;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public LibroBuilder setEstado(String estado){
-
-        this.estado = estado;
-        return this;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public Libro build(){
-        return new Libro(codigo, titulo, autor, categoria, estado);
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public static class Builder{
+        private String codigo;
+        private String titulo;
+        private String autor;
+        private String categoria;
+        private String estado;
+
+        public Builder(String codigo, String titulo, String autor, String categoria, String estado){
+            this.codigo = codigo;
+            this.titulo = titulo;
+            this.autor = autor;
+        }
+
+        public Builder categoria(String categoria){
+            this.categoria = categoria;
+            return this;
+        }
+
+
+        public Builder estado (String estado){
+            this.estado = estado;
+            return this;
+        }
+
+        public LibroBuilder buil(){
+            return new LibroBuilder(this);
+        }
+
     }
 }
