@@ -1,4 +1,4 @@
-package com.biblioteca.tallerbiblioteca.modelo;
+package com.biblioteca.tallerbiblioteca.patronesCreacionales;
 
 public class BibliotecaConfiguracion {
     private String nombre;
