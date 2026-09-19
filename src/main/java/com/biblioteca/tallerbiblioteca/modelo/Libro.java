@@ -1,6 +1,8 @@
 package com.biblioteca.tallerbiblioteca.modelo;
 
-public class Libro {
+import com.biblioteca.tallerbiblioteca.patronesCreacionales.Prototype;
+
+public class Libro implements Prototype {
 
     private String codigo;
     private String titulo;
@@ -17,6 +19,14 @@ public class Libro {
         this.estado = estado;
     }
 
+    public Libro(Libro libro){
+
+        this.codigo = codigo;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.categoria = categoria;
+        this.estado = estado;
+    }
     public String getCodigo() {
         return codigo;
     }
@@ -55,6 +65,12 @@ public class Libro {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    @Override
+    public Libro clone(){
+
+        return new Libro(this);
     }
 }
 
