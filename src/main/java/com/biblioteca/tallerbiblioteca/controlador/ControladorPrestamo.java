@@ -34,8 +34,9 @@ public class ControladorPrestamo {
         if (libro == null) {
             alert.setTitle("Libro no encontrado");
             alert.setHeaderText(null);
-            alert.setContentText("El libro: "+libro.getTitulo()+" no se encontro");
+            alert.setContentText("No se encontró un libro con ese código");
             alert.showAndWait();
+            return;
         }
 
         Prestamo prestamo = new Prestamo(
@@ -46,7 +47,7 @@ public class ControladorPrestamo {
         boolean realizado = biblioteca.prestarLibro(prestamo);
 
         if (realizado) {
-            alert.setTitle("Preceso exitoso");
+            alert.setTitle("Proceso exitoso");
             alert.setHeaderText(null);
             alert.setContentText("El prestamo del libro: "+libro.getTitulo()+ " "+libro.getCodigo()+"\n"+" se realizó con exito");
             alert.showAndWait();

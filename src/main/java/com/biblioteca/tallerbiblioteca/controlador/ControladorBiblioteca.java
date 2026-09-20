@@ -58,7 +58,7 @@ public class ControladorBiblioteca {
 
         Scene scene = new Scene(fxmlLoader.load(), 320, 250);
 
-        ControladorDevolución controladorDevolucion = fxmlLoader.getController();
+        ControladorDevolucion controladorDevolucion = fxmlLoader.getController();
         controladorDevolucion.setBiblioteca(biblioteca);
 
         Stage stage = new Stage();
