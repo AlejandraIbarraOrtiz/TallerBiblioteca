@@ -3,8 +3,12 @@ package com.biblioteca.tallerbiblioteca.controlador;
 import com.biblioteca.tallerbiblioteca.modelo.Biblioteca;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class ControladorDevolución {
+
+    Alert alert = new Alert(AlertType.INFORMATION);
 
     private Biblioteca biblioteca;
 
@@ -21,6 +25,9 @@ public class ControladorDevolución {
 
         String codigoLibro = campoCodigoLibro.getText();
 
-        System.out.println("Código del libro: " + codigoLibro);
+        alert.setTitle("realizar devolución");
+        alert.setHeaderText(null);
+        alert.setContentText("El codigo del libro es"+ codigoLibro );
+        alert.showAndWait();
     }
 }

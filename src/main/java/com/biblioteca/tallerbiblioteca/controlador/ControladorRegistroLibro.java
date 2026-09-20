@@ -5,8 +5,13 @@ import com.biblioteca.tallerbiblioteca.modelo.Libro;
 import com.biblioteca.tallerbiblioteca.patronesCreacionales.LibroBuilder;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 
 public class ControladorRegistroLibro {
+
+    Alert alert = new Alert(AlertType.INFORMATION);
 
     private Biblioteca biblioteca;
 
@@ -47,12 +52,16 @@ public class ControladorRegistroLibro {
         boolean registrado = biblioteca.registrarLibro(libro);
 
         if (registrado){
+            alert.setTitle("Proceso exitoso");
+            alert.setHeaderText(null);
+            alert.setContentText("EL libro: "+libro.getTitulo()+" fue registrado exitosamente");
+            alert.showAndWait();
 
-            System.out.println("Libro registrado correctamente");
-            System.out.println("Título: " + libro.getTitulo());
         }else {
-
-            System.out.println("No se pudo registrar el libro");
+            alert.setTitle("Proceso exitoso");
+            alert.setHeaderText(null);
+            alert.setContentText("EL libro: "+libro.getTitulo()+" fue registrado exitosamente");
+            alert.showAndWait();
         }
     }
 

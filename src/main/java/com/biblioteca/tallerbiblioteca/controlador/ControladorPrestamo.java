@@ -1,4 +1,6 @@
 package com.biblioteca.tallerbiblioteca.controlador;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 import com.biblioteca.tallerbiblioteca.modelo.Biblioteca;
 import com.biblioteca.tallerbiblioteca.modelo.Libro;
@@ -9,6 +11,8 @@ import javafx.scene.control.TextField;
 import java.time.LocalDate;
 
 public class ControladorPrestamo {
+
+    Alert alert = new Alert(AlertType.INFORMATION);
 
     private Biblioteca biblioteca;
 
@@ -28,8 +32,10 @@ public class ControladorPrestamo {
         Libro libro = biblioteca.obtenerLibro(codigoLibro);
 
         if (libro == null) {
-            System.out.println("No se encontró el libro");
-            return;
+            alert.setTitle("Libro no encontrado");
+            alert.setHeaderText(null);
+            alert.setContentText("El libro: "+libro.getTitulo()+" no se encontro");
+            alert.showAndWait();
         }
 
         Prestamo prestamo = new Prestamo(
@@ -40,11 +46,15 @@ public class ControladorPrestamo {
         boolean realizado = biblioteca.prestarLibro(prestamo);
 
         if (realizado) {
-            System.out.println("Préstamo realizado correctamente");
-            System.out.println("Libro: " + libro.getTitulo());
-            System.out.println("Estado: " + libro.getEstado());
+            alert.setTitle("Preceso exitoso");
+            alert.setHeaderText(null);
+            alert.setContentText("El prestamo del libro: "+libro.getTitulo()+ " "+libro.getCodigo()+"\n"+" se realizó con exito");
+            alert.showAndWait();
         } else {
-            System.out.println("No se pudo realizar el préstamo");
+            alert.setTitle("Libro no disponible");
+            alert.setHeaderText(null);
+            alert.setContentText("El libro: "+libro.getTitulo()+"\n"+"no esta disponible para prestamo");
+            alert.showAndWait();
         }
     }
 }
