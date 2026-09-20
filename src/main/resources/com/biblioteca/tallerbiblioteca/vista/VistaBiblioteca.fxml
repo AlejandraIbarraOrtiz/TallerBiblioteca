@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<VBox alignment="CENTER" spacing="15.0"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.biblioteca.tallerbiblioteca.controlador.ControladorBiblioteca">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Biblioteca"/>
+
+    <Button text="Registrar libro" onAction="#registrarLibro"/>
+    <Button text="Realizar préstamo" onAction="#realizarPrestamo"/>
+    <Button text="Realizar devolución" onAction="#realizarDevolucion"/>
+
+</VBox>
+

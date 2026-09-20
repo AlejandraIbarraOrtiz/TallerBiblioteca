@@ -5,4 +5,5 @@ module com.biblioteca.tallerbiblioteca {
 
     opens com.biblioteca.tallerbiblioteca to javafx.fxml;
     exports com.biblioteca.tallerbiblioteca;
+    opens com.biblioteca.tallerbiblioteca.controlador to javafx.fxml;
 }
