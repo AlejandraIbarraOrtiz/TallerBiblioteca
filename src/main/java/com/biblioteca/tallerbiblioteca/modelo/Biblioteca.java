@@ -39,8 +39,16 @@ public class Biblioteca {
     }
 
     public boolean prestarLibro(Prestamo prestamo){
-        if(prestamo == null) return false;
+        if(prestamo == null || !(buacarLibro(prestamo.getLibro().getCodigo()))) {
+            return false;
+        }
         prestamos.add(prestamo);
+        prestamo.getLibro().setEstado("Prestado");
+        return true;
+    }
+    public boolean devolverLibro(Libro libro){
+        if(libro == null || !(buacarLibro(libro.getCodigo()))) return false;
+        libro.setEstado("Disponible");
         return true;
     }
 
