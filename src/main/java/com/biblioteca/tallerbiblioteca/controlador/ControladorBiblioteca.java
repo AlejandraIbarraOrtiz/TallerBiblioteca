@@ -50,8 +50,22 @@ public class ControladorBiblioteca {
     }
 
     @FXML
-    private void realizarDevolucion(){
+    private void realizarDevolucion() throws  IOException{
 
-        System.out.println("Realizar devolución");
+        FXMLLoader fxmlLoader = new FXMLLoader(
+                getClass().getResource("/com/biblioteca/tallerbiblioteca/vista/VistaRealizarDevolucion.fxml")
+        );
+
+        Scene scene = new Scene(fxmlLoader.load(), 320, 250);
+
+        ControladorDevolución controladorDevolucion = fxmlLoader.getController();
+        controladorDevolucion.setBiblioteca(biblioteca);
+
+        Stage stage = new Stage();
+        stage.setTitle("Realizar devolución");
+        stage.setScene(scene);
+        stage.show();
+
+
     }
 }

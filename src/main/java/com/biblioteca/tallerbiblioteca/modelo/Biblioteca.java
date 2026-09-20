@@ -1,6 +1,7 @@
 package com.biblioteca.tallerbiblioteca.modelo;
 import javafx.scene.Node;
 import java.text.Normalizer;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Biblioteca {
@@ -52,17 +53,48 @@ public class Biblioteca {
     }
 
     public boolean prestarLibro(Prestamo prestamo){
-        if(prestamo == null || !(buscarLibro(prestamo.getLibro().getCodigo()))) {
+
+        if(prestamo == null){
             return false;
         }
+
+        Libro libro = prestamo.getLibro();
+
+        if(libro == null){
+            return false;
+        }
+
+        if("Prestado".equalsIgnoreCase(libro.getEstado())){
+            return false;
+        }
+
         prestamos.add(prestamo);
-        prestamo.getLibro().setEstado("Prestado");
+        libro.setEstado("Prestado");
+
         return true;
+
     }
+
     public boolean devolverLibro(Libro libro){
         if(libro == null || !(buscarLibro(libro.getCodigo()))) return false;
         libro.setEstado("Disponible");
         return true;
+
+    }
+
+    public boolean devolverLibro(String codigo){
+
+        for (Prestamo prestamo : prestamos){
+
+            if (!prestamo.isDevuelto() && normalizar(codigo).equals(normalizar(prestamo.getLibro().getCodigo()))){
+
+                prestamo.devolverLibro(LocalDate.now());
+
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }
