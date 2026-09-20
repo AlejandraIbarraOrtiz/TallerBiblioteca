@@ -46,7 +46,7 @@ public class LibroBuilder {
         private String categoria;
         private String estado;
 
-        public Builder(String codigo, String titulo, String autor, String categoria, String estado){
+        public Builder(String codigo, String titulo, String autor){
             this.codigo = codigo;
             this.titulo = titulo;
             this.autor = autor;
@@ -63,7 +63,7 @@ public class LibroBuilder {
             return this;
         }
 
-        public LibroBuilder buil(){
+        public LibroBuilder build(){
             return new LibroBuilder(this);
         }
 

@@ -1,5 +1,6 @@
 package com.biblioteca.tallerbiblioteca.modelo;
 
+import com.biblioteca.tallerbiblioteca.patronesCreacionales.LibroBuilder;
 import com.biblioteca.tallerbiblioteca.patronesCreacionales.Prototype;
 
 public class Libro implements Prototype {
@@ -10,22 +11,22 @@ public class Libro implements Prototype {
     private String categoria;
     private String estado;
 
-    public Libro(String codigo, String titulo, String autor, String categoria, String estado){
+    public Libro(LibroBuilder libroBuilder){
 
-        this.codigo = codigo;
-        this.titulo = titulo;
-        this.autor = autor;
-        this.categoria = categoria;
-        this.estado = estado;
+        this.codigo = libroBuilder.getCodigo();
+        this.titulo = libroBuilder.getTitulo();
+        this.autor = libroBuilder.getAutor();
+        this.categoria = libroBuilder.getCategoria();
+        this.estado = libroBuilder.getEstado();
     }
 
     public Libro(Libro libro){
 
-        this.codigo = codigo;
-        this.titulo = titulo;
-        this.autor = autor;
-        this.categoria = categoria;
-        this.estado = estado;
+        this.codigo =libro.codigo;
+        this.titulo = libro.titulo;
+        this.autor = libro.autor;
+        this.categoria = libro.categoria;
+        this.estado = libro.estado;
     }
     public String getCodigo() {
         return codigo;
