@@ -31,9 +31,22 @@ public class ControladorBiblioteca {
     }
 
     @FXML
-    private void realizarPrestamo(){
+    private void realizarPrestamo() throws IOException{
 
-        System.out.println("RealizarPrestamo");
+        FXMLLoader fxmlLoader = new FXMLLoader(
+                getClass().getResource("/com/biblioteca/tallerbiblioteca/vista/VistaRealizarPrestamo.fxml")
+        );
+
+        Scene scene = new Scene(fxmlLoader.load(), 320, 250);
+
+        ControladorPrestamo controladorPrestamo = fxmlLoader.getController();
+        controladorPrestamo.setBiblioteca(biblioteca);
+
+        Stage stage = new Stage();
+        stage.setTitle("Realizar préstamo");
+        stage.setScene(scene);
+        stage.show();
+
     }
 
     @FXML

@@ -30,6 +30,19 @@ public class Biblioteca {
         return false;
     }
 
+    public Libro obtenerLibro(String codigo){
+
+        for (Libro libro: libros){
+
+            if (normalizar(codigo).equals((normalizar(libro.getCodigo())))){
+
+                return libro;
+            }
+        }
+
+        return null;
+    }
+
     public boolean registrarLibro(Libro libro){
 
         if(libro == null || buscarLibro(libro.getCodigo())) return false;
@@ -39,7 +52,7 @@ public class Biblioteca {
     }
 
     public boolean prestarLibro(Prestamo prestamo){
-        if(prestamo == null || !(buacarLibro(prestamo.getLibro().getCodigo()))) {
+        if(prestamo == null || !(buscarLibro(prestamo.getLibro().getCodigo()))) {
             return false;
         }
         prestamos.add(prestamo);
@@ -47,7 +60,7 @@ public class Biblioteca {
         return true;
     }
     public boolean devolverLibro(Libro libro){
-        if(libro == null || !(buacarLibro(libro.getCodigo()))) return false;
+        if(libro == null || !(buscarLibro(libro.getCodigo()))) return false;
         libro.setEstado("Disponible");
         return true;
     }
