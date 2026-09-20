@@ -19,11 +19,11 @@ public class Biblioteca {
                 toLowerCase();
     }
 
-    public boolean buacarLibro(String codigo){
+    public boolean buscarLibro(String codigo){
         if (libros.isEmpty()) return false;
 
         for(Libro l: libros){
-            if (normalizar(codigo).equals(l.getCodigo())){
+            if (normalizar(codigo).equals(normalizar(l.getCodigo()))){
                 return true;
             }
         }
@@ -32,7 +32,7 @@ public class Biblioteca {
 
     public boolean registrarLibro(Libro libro){
 
-        if(libro == null || buacarLibro(libro.getCodigo())) return false;
+        if(libro == null || buscarLibro(libro.getCodigo())) return false;
 
         libros.add(libro);
         return true;

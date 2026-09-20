@@ -63,8 +63,8 @@ public class LibroBuilder {
             return this;
         }
 
-        public LibroBuilder build(){
-            return new LibroBuilder(this);
+        public Libro build(){
+            return new Libro(new LibroBuilder(this));
         }
 
     }
